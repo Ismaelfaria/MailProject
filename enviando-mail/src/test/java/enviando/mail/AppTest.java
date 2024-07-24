@@ -18,7 +18,7 @@ import org.junit.Test;
  */
 public class AppTest 
 {
-	private final String username = "limaismael8901@gmail.com";
+	private final String username = "Escreva seu email";
 	private final String password = "lyjk ukqp xrvr ksyg";
 	
 	@org.junit.Test
@@ -28,6 +28,8 @@ public class AppTest
 		try {
 			
 		Properties properties = new Properties();
+		
+		properties.put("mail.smtp.ssl.trust", "*"); //Autenticar com segurança ssl
 		properties.put("mail.smtp.auth", "true"); //Autorização
 		properties.put("mail.smtp.starttls", "true"); //Authenticação
 		properties.put("mail.smtp.host", "smtp.gmail.com"); //Servidor do Gmail
@@ -47,7 +49,7 @@ public class AppTest
 		
 		Message message = new MimeMessage(session);
 		
-		message.setFrom(new InternetAddress(username)); //Quem esta enviando
+		message.setFrom(new InternetAddress(username, "Ismael Dev - Treinamentos")); //Quem esta enviando
 		message.setRecipients(Message.RecipientType.TO, toUser);/*Email de destino*/
 		message.setSubject("Chegou e-mail enviado com java");/*Assunto do e-mail*/
 		message.setText("Olá programador, vc acaba de receber um e-mail enviado com Java do curso Formação Java Web do Alex");
